@@ -1,9 +1,0 @@
-#ignore logs
-/baselines_robosuite/logs/**
-./logs/**
-
-# pycache
-*__pycache__*
-*.pyc
-
-notes_to_self
