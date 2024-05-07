@@ -1,0 +1,27 @@
+ onager prelaunch +jobname CIP-1-12-unstructured +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12 +arg --seed 0 1 2 3 4 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp False +arg --bc False +arg --safety False +arg --grasp_strategy None +arg --ik_strategy random +arg --action_scale 0.5 +tag --run_title unstructured +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1 +arg --max_eval_eps 500
+
+onager prelaunch +jobname CIP-1-12-head +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12 +arg --seed 0 1 2 3 4 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp True +arg --bc False +arg --safety False +arg --grasp_strategy None +arg --ik_strategy random +arg --action_scale 0.5 +tag --run_title head +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1 +arg --max_eval_eps 500
+
+onager prelaunch +jobname CIP-1-12-safety +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12 +arg --seed 0 1 2 3 4 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp True +arg --bc False +arg --safety True +arg --grasp_strategy None +arg --ik_strategy random +arg --action_scale 0.5 +tag --run_title safety +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1  +arg --max_eval_eps 500
+
+onager prelaunch +jobname CIP-1-12-mv +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12 +arg --seed 0 1 2 3 4 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp True +arg --bc False +arg --safety True +arg --grasp_strategy None +arg --ik_strategy max +arg --action_scale 0.5 +tag --run_title mv +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1 +arg --max_eval_eps 500
+
+onager prelaunch +jobname CIP-1-12-cip +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12 +arg --seed 0 1 2 3 4 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp True +arg --bc False +arg --safety True +arg --grasp_strategy tsr_ucb +arg --ik_strategy max +arg --action_scale 0.5 +tag --run_title cip +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1 +arg --max_eval_eps 500
+
+onager prelaunch +jobname CIP-1-12-bc +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12 +arg --seed 0 1 2 3 4 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp True +arg --bc True +arg --safety True +arg --grasp_strategy tsr_ucb +arg --ik_strategy max +arg --action_scale 0.5 +tag --run_title cip +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1 +arg --max_eval_eps 500
+
+onager launch --backend slurm --jobname CIP-1-12-unstructured --duration 23:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+onager launch --backend slurm --jobname CIP-1-12-head --duration 23:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+onager launch --backend slurm --jobname CIP-1-12-safety --duration 23:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+onager launch --backend slurm --jobname CIP-1-12-mv --duration 23:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+onager launch --backend slurm --jobname CIP-1-12-cip --duration 23:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+onager launch --backend slurm --jobname CIP-1-12-bc --duration 23:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+
+------- 
+LONG DEMO RUNS
+
+onager prelaunch +jobname CIP-1-12-demo-long +command "python run_td3_baseline.py" +arg --experiment_name CIP-1-12-demo-long +arg --seed 0 1 +arg --task DoorCIP DrawerCIP SlideCIP LeverCIP +arg --grasp True +arg --bc False +arg --safety False +arg --grasp_strategy None +arg --ik_strategy max +arg --action_scale 0.5 +tag --run_title demo-long +arg --noise_std 0.05 +arg --lr 0.0001 +arg --batch_size 256 +arg --gradient_steps -1 +arg --max_eval_eps 2000
+
+onager launch --backend slurm --jobname CIP-1-12-demo-long --duration 48:00:00 --gpus 1 --mem 8 --partition 3090-gcondo
+
+

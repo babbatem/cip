@@ -1,0 +1,15 @@
+
+# Get stats with `python ikflow/evaluate.py --n_samples_for_runtime=512 --model_name=panda_lite`
+# Average L2 error:      12.5184 mm
+# Average angular error: 14.4587 deg
+# Average runtime:       8.3918 +/- 0.0006 ms (for 512 samples)
+panda_lite:
+  coupling_layer:         'glow'
+  nb_nodes:               8
+  dim_latent_space:       9
+  coeff_fn_config:        3
+  coeff_fn_internal_size: 1024
+  rnvp_clamp:             2.5
+  robot_name:             'panda_arm'
+  ndofs:                  7
+  model_weights_filepath: 'ikflow/models/panda_arm2-sweet-armadillo-69.pkl'
