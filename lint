@@ -1,5 +1,0 @@
-# Example usage: `./lint`
-python -m black ikflow/*.py --line-length=120 --preview
-python -m black ikflow/tests/*.py --line-length=120 --preview
-
-# TODO: consider linting the rest of the codebase as well
