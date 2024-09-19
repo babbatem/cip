@@ -1,7 +1,6 @@
-[submodule "robosuite"]
-	path = third_party/robosuite
-	url = git@github.com:babbatem/robosuite.git
-	branch = motor-skills-cip
 [submodule "stable-baselines3"]
 	path = stable-baselines3
 	url = git@github.com:SreehariRamMohan/stable-baselines3.git
+[submodule "third_party/robosuite"]
+	path = third_party/robosuite
+	url = git@github.com:babbatem/robosuite.git
